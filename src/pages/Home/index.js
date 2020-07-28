@@ -1,11 +1,11 @@
-import React from 'react';
-import Menu from './components/Menu'
-import BannerMain from './components/BannerMain'
-import Carousel from './components/Carousel'
-import Footer from './components/Footer'
-import dadosIniciais from './data/dados_iniciais.json'
+import React from 'react'
+import Menu from '../../components/Menu'
+import BannerMain from '../../components/BannerMain'
+import Carousel from '../../components/Carousel'
+import Footer from '../../components/Footer'
+import dadosIniciais from '../../data/dados_iniciais.json'
 
-function App() {
+function Home() {
   return (
     <div className="App" style={{ background: "#141414" }}>
       <Menu />
@@ -46,4 +46,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
