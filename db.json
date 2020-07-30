@@ -1,0 +1,16 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Front End",
+            "description": "Vídeos de Front End",
+            "color": "#cbd1fr"
+        },
+        {
+            "id": 2,
+            "name": "Back End",
+            "description": "Vídeos de Back End",
+            "color": "#cbd1fr"
+        }
+    ]
+}
