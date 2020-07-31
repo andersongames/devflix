@@ -41,6 +41,12 @@
     }
   }
   
+  .Buttons {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
   .ButtonLink {
     color: var(--white);
     border: 1px solid var(--white);

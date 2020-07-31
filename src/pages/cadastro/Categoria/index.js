@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CategoryRegister() {
   const initialValues = {
@@ -10,22 +10,9 @@ function CategoryRegister() {
     description: '',
     color: '',
   };
+
+  const { handleChange, values, clearForm } = useForm(initialValues);
   const [categories, setCategory] = useState([]);
-  const [values, setValues] = useState(initialValues);
-
-  function setValue(key, value) {
-    setValues({
-      ...values,
-      [key]: value,
-    });
-  }
-
-  function handleChange(input) {
-    setValue(
-      input.target.getAttribute('title'),
-      input.target.value,
-    );
-  }
 
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost')
@@ -48,14 +35,13 @@ function CategoryRegister() {
         {values.title}
       </h1>
 
-      <form onSubmit={function handleSubmit(submit) {
-        submit.preventDefault();
+      <form onSubmit={function handleSubmit(event) {
+        event.preventDefault();
         setCategory([
           ...categories,
           values,
         ]);
-
-        setValues(initialValues);
+        clearForm();
       }}
       >
         <FormField
@@ -89,16 +75,13 @@ function CategoryRegister() {
       </form>
 
       <ul>
+        <h3>Categorias Existentes:</h3>
         {categories.map((category) => (
           <li key={`${category.title}`}>
             {category.title}
           </li>
         ))}
       </ul>
-
-      <Link to="/">
-        Ir para Home
-      </Link>
     </PageDefault>
   );
 }
