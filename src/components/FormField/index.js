@@ -51,6 +51,11 @@ const Input = styled.input`
   resize: none;
   border-radius: 4px;
   transition: border-color .3s;
+
+  &[type='color'] {
+    height: 82px;
+    width: 192px;
+  }
   
   &:focus {
     border-bottom-color: var(--primary);
@@ -66,9 +71,9 @@ const Input = styled.input`
 `;
 
 function FormField({
-  label, type, name, value, onChange,
+  label, type, title, value, onChange,
 }) {
-  const fieldId = `id_${name}`;
+  const fieldId = `id_${title}`;
   const isTextarea = type === 'textarea';
   const tag = isTextarea ? 'textarea' : 'input';
   const hasValue = Boolean(value.length);
@@ -80,7 +85,7 @@ function FormField({
         <Input
           as={tag}
           type={type}
-          name={name}
+          title={title}
           value={value}
           hasValue={hasValue}
           onChange={onChange}
@@ -102,7 +107,7 @@ FormField.defaultProps = {
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
 };

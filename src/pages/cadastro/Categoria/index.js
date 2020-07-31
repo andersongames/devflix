@@ -6,7 +6,7 @@ import Button from '../../../components/Button';
 
 function CategoryRegister() {
   const initialValues = {
-    name: '',
+    title: '',
     description: '',
     color: '',
   };
@@ -22,13 +22,15 @@ function CategoryRegister() {
 
   function handleChange(input) {
     setValue(
-      input.target.getAttribute('name'),
+      input.target.getAttribute('title'),
       input.target.value,
     );
   }
 
   useEffect(() => {
-    const URL = 'http://localhost:8080/categories/';
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categories'
+      : 'https://andersondevflix.herokuapp.com/categories';
     fetch(URL)
       .then(async (response) => {
         const serverResponse = await response.json();
@@ -43,7 +45,7 @@ function CategoryRegister() {
       <h1>
         Cadastro de Categoria:
         <br />
-        {values.name}
+        {values.title}
       </h1>
 
       <form onSubmit={function handleSubmit(submit) {
@@ -57,10 +59,10 @@ function CategoryRegister() {
       }}
       >
         <FormField
-          label="Nome: "
+          label="Título: "
           type="text"
-          name="name"
-          value={values.name}
+          title="title"
+          value={values.title}
           onChange={handleChange}
         />
 
@@ -68,7 +70,7 @@ function CategoryRegister() {
           as="textarea"
           label="Descrição: "
           type="textarea"
-          name="description"
+          title="description"
           value={values.description}
           onChange={handleChange}
         />
@@ -76,20 +78,20 @@ function CategoryRegister() {
         <FormField
           label="Cor: "
           type="color"
-          name="color"
+          title="color"
           value={values.color}
           onChange={handleChange}
         />
 
-        <Button>
+        <Button as="button">
           Cadastrar
         </Button>
       </form>
 
       <ul>
         {categories.map((category) => (
-          <li key={`${category.name}`}>
-            {category.name}
+          <li key={`${category.title}`}>
+            {category.title}
           </li>
         ))}
       </ul>

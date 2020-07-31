@@ -1,7 +1,7 @@
-import React from 'react'
-import { VideoCardGroupContainer, Title, ExtraLink } from './styles'
-import VideoCard from './components/VideoCard'
-import Slider, { SliderItem } from './components/Slider'
+import React from 'react';
+import { VideoCardGroupContainer, Title, ExtraLink } from './styles';
+import VideoCard from './components/VideoCard';
+import Slider, { SliderItem } from './components/Slider';
 
 function Carousel({
   ignoreFirstVideo,
@@ -25,7 +25,7 @@ function Carousel({
           }
         </>
       )}
-      <Slider>
+      <Slider arrowColor={categoryColor}>
         {videos.map((video, index) => {
           if (ignoreFirstVideo && index === 0) {
             return null;

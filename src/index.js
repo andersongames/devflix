@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import './index.css'
-import Home from './pages/Home'
-import CadastroVideo from './pages/cadastro/Video'
-import CadastroCategoria from './pages/cadastro/Categoria'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import './index.css';
+import Home from './pages/Home';
+import CadastroVideo from './pages/cadastro/Video';
+import CadastroCategoria from './pages/cadastro/Categoria';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -12,8 +12,8 @@ ReactDOM.render(
       <Route path="/" component = {Home} exact />
       <Route path="/cadastro/video" component = {CadastroVideo} />
       <Route path="/cadastro/categoria" component = {CadastroCategoria} />
-      <Route component = {Home} /> {/*404*/}
+      <Route component = {Home} /> {/* 404 */}
     </Switch>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
