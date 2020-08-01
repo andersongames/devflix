@@ -10,6 +10,7 @@ import categoriesRepository from '../../../repositories/categories';
 function CadastroVideo() {
   const history = useHistory();
   const [categories, setCategories] = useState([]);
+  const categoryTitles = categories.map(({ title }) => title);
   const { handleChange, values } = useForm({
     title: 'Dê super poderes ao CSS com SASS | Masterclass #15',
     url: 'https://www.youtube.com/watch?v=BaI8dHUthLA&t=2414s',
@@ -31,9 +32,7 @@ function CadastroVideo() {
       <form onSubmit={(event) => {
         event.preventDefault();
 
-        const chosenCategory = categories.find((category) => {
-          return category.title === values.category;
-        });
+        const chosenCategory = categories.find((category) => category.title === values.category);
 
         videosRepository.create({
           title: values.title,
@@ -64,8 +63,7 @@ function CadastroVideo() {
           title="category"
           value={values.category}
           onChange={handleChange}
-          suggestions={['Front End', 'Back End',
-          ]}
+          suggestions={categoryTitles}
         />
 
         <Button as="button">
